@@ -13,18 +13,20 @@ import java.util.LinkedList;
 public class Deputies {
    public LinkedList<Deputy> deputiesList ;
 
-   Deputies()throws IOException , JSONException {
-        deputiesList=addDeputies();
+
+   Deputies(int cadence)throws IOException , JSONException {
+        deputiesList=addDeputies(cadence);
 
    }
-private LinkedList<Deputy> addDeputies() throws IOException, JSONException
+private LinkedList<Deputy> addDeputies(int cadence) throws IOException, JSONException
 {
    LinkedList<Deputy> deputiestmp= new LinkedList<>();
+    JSONArray deputyJson;
+   for (int i=1; i<=18-cadence;i++) {  //zmienic na 18
+       deputyJson = JsonDownloader.run("https://api-v3.mojepanstwo.pl/dane/poslowie.json?conditions[poslowie.kadencja]=" + cadence+"&_type=objects&page="+i).getJSONArray("Dataobject");
 
-    JSONArray deputyJson= JsonDownloader.run("https://api-v3.mojepanstwo.pl/dane/poslowie.json").getJSONArray("Dataobject");
-
-    deputyJson.toList().stream().map(HashMap.class :: cast).forEach(e-> deputiestmp.add(new Deputy(e.get("slug").toString(),Integer.parseInt(e.get("id").toString()))));
-
+       deputyJson.toList().stream().map(HashMap.class::cast).forEach(e -> deputiestmp.add(new Deputy(e.get("slug").toString(), Integer.parseInt(e.get("id").toString()))));
+   }
     return deputiestmp;
 }
 
