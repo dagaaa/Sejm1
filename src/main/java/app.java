@@ -10,7 +10,11 @@ public class app {
         try {
             JSONObject j=JsonDownloader.run("https://api-v3.mojepanstwo.pl/dane/poslowie.json");
             Deputies deputies = new Deputies();
-            System.out.print(new StatisticSystem(deputies).deputiesData.keySet().size());
+            deputies.deputiesList.forEach(System.out:: println);
+            StatisticSystem statisticSystem= new StatisticSystem(deputies);
+           // Trips trip = new Trips();
+
+            System.out.print( new Trips().maxTripAbroad(deputies,statisticSystem));
         }catch(Exception ex){
             ex.printStackTrace();
         }

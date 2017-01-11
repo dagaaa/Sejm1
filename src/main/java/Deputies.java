@@ -1,3 +1,4 @@
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,4 +29,22 @@ private LinkedList<Deputy> addDeputies() throws IOException, JSONException
 }
 
 
+    public Integer getDeputyID(String name) {
+        for (Deputy deputy:
+           deputiesList  ) {
+            if(deputy.name.equals(name))
+                return deputy.ID;
+
+        }
+        throw new IllegalArgumentException(name+"does not exist");
+    }
+
+    public String getDeputyName(int ID)
+    {
+        for(Deputy deputy: deputiesList)
+            if (deputy.ID == ID)
+                return deputy.name;
+        throw new IllegalArgumentException (ID +"does not exist");
+
+    }
 }
