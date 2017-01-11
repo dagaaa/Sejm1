@@ -14,7 +14,7 @@ public class app {
             StatisticSystem statisticSystem= new StatisticSystem(deputies);
            // Trips trip = new Trips();
 
-            System.out.print( new Trips().maxTripAbroad(deputies,statisticSystem));
+            System.out.println( new Trips().wereInItaly(deputies,statisticSystem));
         }catch(Exception ex){
             ex.printStackTrace();
         }
