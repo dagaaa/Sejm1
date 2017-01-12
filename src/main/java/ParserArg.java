@@ -17,7 +17,7 @@ public class ParserArg {
         if(arg.length!=2)
             throw new IllegalArgumentException("You passed wrong number of parameters");
         if(Integer.parseInt(arg[1])!=7 && Integer.parseInt(arg[1])!=8)
-            throw new IllegalArgumentException("You passed wrong number. It can be only 7 or 8");
+            throw new NumberFormatException("You passed wrong number. It can be only 7 or 8");
         return arg;
 
     }
