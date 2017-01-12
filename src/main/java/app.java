@@ -14,10 +14,17 @@ public class app {
             Deputies deputies = new Deputies(arg.cadence);
             StatisticSystem statisticSystem= new StatisticSystem(deputies);
        //     deputies.deputiesList.forEach(System.out:: println);
-           // Trips trip = new Trips();
+            Trips trip = new Trips();
+            Expenses expense = new Expenses();
+          //  System.out.println(deputies.getDeputyID("garbowski-tomasz"));
+            System.out.println( expense.deputyExpenses(deputies,statisticSystem,arg.name));
+            System.out.println( expense.smallExpenses(deputies,statisticSystem,arg.name));
+            System.out.println( expense.avgAllExpenses(statisticSystem));
+            System.out.println( trip.maxTrips(deputies,statisticSystem));
+            System.out.println( trip.maxTripAbroad(deputies,statisticSystem));
+            System.out.println( trip.mostExpensiveTrip(deputies,statisticSystem));
+            System.out.println( trip.wereInItaly(deputies,statisticSystem));
 
-            System.out.println( new Trips().wereInItaly(deputies,statisticSystem));
-            System.out.println("lalala");
         }catch(Exception ex){
             System.out.println(ex);
             ex.printStackTrace();

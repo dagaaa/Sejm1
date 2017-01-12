@@ -36,6 +36,24 @@ public class Expenses {
         return  sum;
     }
 
+    private int  index(JSONObject wydatki){
+        boolean contain = false;
+        int i=0;
+        int num=-1;
+        while (!contain && wydatki.getJSONArray("punkty").length()>i ) {
+           if( wydatki.getJSONArray("punkty").getJSONObject(i).get("tytul").equals("Koszty drobnych napraw i remontów lokalu biura poselskiego")) {
+               contain = true;
+               num= wydatki.getJSONArray("punkty").getJSONObject(i).getInt("numer");
+           }
+
+            i++;
+        }
+
+        if(contain && num!=-1)
+            return  num-1;
+        throw new IllegalArgumentException("There is no category like drobne naprawy");
+    }
+
     public  Double avgAllExpenses(StatisticSystem deputiesData) {
         Double sum = 0.0;
         int amountOfDeputies = deputiesData.deputiesDataMap.size();
