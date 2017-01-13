@@ -1,4 +1,7 @@
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 /**
  * Created by daga on 31.12.2016.
@@ -25,9 +28,15 @@ public class app {
             System.out.println( trip.mostExpensiveTrip(deputies,statisticSystem));
             System.out.println( trip.wereInItaly(deputies,statisticSystem));
 
-        }catch(Exception ex){
-            System.out.println(ex);
-            ex.printStackTrace();
+        }catch (IOException | JSONException ex) {
+            System.out.println(ex );
+        } catch (NumberFormatException ex) {
+            System.out.println( ex);
+        } catch (IllegalArgumentException ex) {
+            ex.getCause();
         }
+
+
+
     }
 }
