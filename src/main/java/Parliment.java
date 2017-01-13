@@ -34,6 +34,8 @@ public class Parliment {
             System.out.println( ex);
         } catch (IllegalArgumentException ex) {
             ex.getCause();
+        }catch (RuntimeException ex){
+            System.out.println(ex);
         }
 
 
